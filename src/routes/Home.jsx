@@ -48,6 +48,9 @@ function Home() {
                                                         borderWidth: isDragActive ? '2px' : '1px'
                                                     }}>
                                                     {isDragActive && <Badge variant="primary">Drop here</Badge>}
+                                                    <Card.Body>
+                                                        <Card.Title>Upload a book PDF</Card.Title>
+                                                    </Card.Body>
                                                     <Card.Img
                                                         variant="top"
                                                         src={pdfImage}
@@ -57,20 +60,31 @@ function Home() {
                                                             margin: '3em'
                                                         }} />
                                                     <Card.Body>
-                                                        <Card.Body>
-                                                            <Card.Title>Upload a book PDF</Card.Title>
-                                        Drag and drop file here or
-                                        <Button variant="link">upload from your computer</Button>
-                                                            <input {...getInputProps()} />
-                                                        </Card.Body>
+                                                        Drag and drop file here or
+                                                            <Button
+                                                            style={{
+                                                                paddingLeft: '0'
+                                                            }}
+                                                            variant="link"
+                                                        >
+                                                            upload from your computer
+                                                            </Button>
+                                                        <input {...getInputProps()} />
+                                                        {pdfFile?.name || ''}
                                                         <Container>
                                                             <Row >
                                                                 <Col />
                                                                 <Col>
-                                                                    <Button onClick={(e) => {
-                                                                        e.stopPropagation();
-                                                                        setView('editTextbook');
-                                                                    }} variant="success">Next</Button>
+                                                                    <Button
+                                                                        disabled={!pdfFile?.path}
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            setView('editTextbook');
+                                                                        }}
+                                                                        variant="success"
+                                                                    >
+                                                                        Next
+                                                                    </Button>
                                                                 </Col>
                                                                 <Col />
                                                             </Row>
@@ -88,6 +102,9 @@ function Home() {
                                     </Col>
                                     <Col>
                                         <Card style={{ width: '18rem' }}>
+                                            <Card.Body>
+                                                <Card.Title>Use an English video</Card.Title>
+                                            </Card.Body>
                                             <Card.Img
                                                 variant="top"
                                                 src={videoImage}
@@ -97,13 +114,10 @@ function Home() {
                                                     margin: '3em'
                                                 }} />
                                             <Card.Body>
-                                                <Card.Title>Use an English video</Card.Title>
-                                                <Card.Body>
-                                                    <Form.Group controlId="videoURL">
-                                                        <Form.Label>Enter video file URL</Form.Label>
-                                                        <Form.Control type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
-                                                    </Form.Group>
-                                                </Card.Body>
+                                                <Form.Group controlId="videoURL">
+                                                    <Form.Label>Enter video file URL</Form.Label>
+                                                    <Form.Control type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+                                                </Form.Group>
                                                 <Container>
                                                     <Row >
                                                         <Col />
@@ -170,7 +184,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
         </>);
     }
 
-    const renderEditor = () => {
+    const renderEditorView = () => {
         return (
             <>
                 <Container>
@@ -207,7 +221,66 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                                 <Button variant="outline-primary" onClick={(e) => {
                                     setView('choose');
                                 }}>Previous</Button>
-                                <Button variant="outline-primary">Next</Button>
+                                <Button variant="outline-primary" onClick={(e) => {
+                                    setView(view === 'editTextbook' ? 'downloadNarration' : 'downloadTranslation');
+                                }}>Next</Button>
+                            </ButtonGroup>
+                        </Col>
+                        <Col></Col>
+                    </Row>
+                </Container>
+            </>
+        );
+    }
+
+    const renderNarrationDownload = () => {
+        return 'renderNarrationDownload';
+    }
+
+    const renderTranslatedVideoDownload = () => {
+        return 'renderTranslatedVideoDownload';
+    }
+
+    const renderDowloadView = () => {
+        return (
+            <>
+                <Container>
+                    <Row>
+                        <Col md={{ span: 12, offset: 0 }}>
+                            <div style={{
+                                backgroundColor: 'transparent',
+                                padding: '1rem'
+                            }}
+                            >
+                                <h1 style={{
+                                    textAlign: 'center'
+                                }}>
+                                    {view === 'downloadNarration' ? 'Download full narration' : 'Review and download translated video'}
+                                </h1>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+                {view === 'downloadNarration' ? renderNarrationDownload() : renderTranslatedVideoDownload()}
+                <Container style={{
+                    padding: '1em 0'
+                    // position: 'fixed',
+                    // bottom: '9px',
+                    // minWidth: '100vw'
+                }} >
+                    <Row>
+                        <Col></Col>
+                        <Col>
+                            <ButtonGroup aria-label="Basic example" style={{
+                                display: 'flex',
+                                justifyContent: 'center'
+                            }}>
+                                <Button variant="outline-primary" onClick={(e) => {
+                                    setView('downloadNarration' ? 'editTextbook' : 'editVideo');
+                                }}>Previous</Button>
+                                <Button variant="outline-primary" onClick={(e) => {
+                                    setView('choose');
+                                }}>Start Over</Button>
                             </ButtonGroup>
                         </Col>
                         <Col></Col>
@@ -220,7 +293,8 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
     return (
         <>
             {view === 'choose' && renderStepOne()}
-            {(view === 'editTextbook' || view === 'editVideo') && renderEditor()}
+            {(view === 'editTextbook' || view === 'editVideo') && renderEditorView()}
+            {(view === 'downloadNarration' || view === 'downloadTranslation') && renderDowloadView()}
         </>
     )
 }
