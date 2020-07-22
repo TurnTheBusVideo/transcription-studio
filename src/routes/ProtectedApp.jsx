@@ -20,9 +20,9 @@ function ProtectedApp({ userData }) {
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav defaultActiveKey="/transcribe" className="mr-auto">
+                            <Nav defaultActiveKey="/transcription-studio" className="mr-auto">
                                 <Nav.Item className='nav-link'>
-                                    <NavLink activeClassName="active-top-route" to="/transcribe" >Transcribe</NavLink>
+                                    <NavLink activeClassName="active-top-route" to="/transcription-studio" >Transcribe</NavLink>
                                 </Nav.Item >
                             </Nav>
                         </Navbar.Collapse>
