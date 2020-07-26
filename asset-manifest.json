@@ -1,27 +1,29 @@
 {
   "files": {
     "main.css": "/transcription-studio/static/css/main.2869d2e5.chunk.css",
-    "main.js": "/transcription-studio/static/js/main.5ae533b2.chunk.js",
-    "main.js.map": "/transcription-studio/static/js/main.5ae533b2.chunk.js.map",
+    "main.js": "/transcription-studio/static/js/main.562a7c44.chunk.js",
+    "main.js.map": "/transcription-studio/static/js/main.562a7c44.chunk.js.map",
     "runtime-main.js": "/transcription-studio/static/js/runtime-main.0b480857.js",
     "runtime-main.js.map": "/transcription-studio/static/js/runtime-main.0b480857.js.map",
     "static/css/2.69121389.chunk.css": "/transcription-studio/static/css/2.69121389.chunk.css",
-    "static/js/2.c463dc27.chunk.js": "/transcription-studio/static/js/2.c463dc27.chunk.js",
-    "static/js/2.c463dc27.chunk.js.map": "/transcription-studio/static/js/2.c463dc27.chunk.js.map",
+    "static/js/2.48e66a00.chunk.js": "/transcription-studio/static/js/2.48e66a00.chunk.js",
+    "static/js/2.48e66a00.chunk.js.map": "/transcription-studio/static/js/2.48e66a00.chunk.js.map",
     "index.html": "/transcription-studio/index.html",
-    "precache-manifest.7332ccda63e9ce8becc11b1b822dce71.js": "/transcription-studio/precache-manifest.7332ccda63e9ce8becc11b1b822dce71.js",
+    "precache-manifest.320eae7743a89bbba71f8aa884207ef2.js": "/transcription-studio/precache-manifest.320eae7743a89bbba71f8aa884207ef2.js",
     "service-worker.js": "/transcription-studio/service-worker.js",
     "static/css/2.69121389.chunk.css.map": "/transcription-studio/static/css/2.69121389.chunk.css.map",
     "static/css/main.2869d2e5.chunk.css.map": "/transcription-studio/static/css/main.2869d2e5.chunk.css.map",
-    "static/js/2.c463dc27.chunk.js.LICENSE.txt": "/transcription-studio/static/js/2.c463dc27.chunk.js.LICENSE.txt",
+    "static/js/2.48e66a00.chunk.js.LICENSE.txt": "/transcription-studio/static/js/2.48e66a00.chunk.js.LICENSE.txt",
+    "static/media/mp3.png": "/transcription-studio/static/media/mp3.af7bac1e.png",
+    "static/media/mp4.png": "/transcription-studio/static/media/mp4.e0f6812f.png",
     "static/media/temp.pdf": "/transcription-studio/static/media/temp.47a8ec2c.pdf",
     "static/media/youtube.png": "/transcription-studio/static/media/youtube.9824f8fc.png"
   },
   "entrypoints": [
     "static/js/runtime-main.0b480857.js",
     "static/css/2.69121389.chunk.css",
-    "static/js/2.c463dc27.chunk.js",
+    "static/js/2.48e66a00.chunk.js",
     "static/css/main.2869d2e5.chunk.css",
-    "static/js/main.5ae533b2.chunk.js"
+    "static/js/main.562a7c44.chunk.js"
   ]
 }
