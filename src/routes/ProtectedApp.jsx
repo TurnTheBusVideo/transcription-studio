@@ -12,7 +12,7 @@ function ProtectedApp({ userData }) {
                 <div className="d-flex flex-column app-ctr-lvl-1">
                     <Navbar bg="light" expand="lg" sticky="top" className="top-nav" >
                         <Navbar.Brand>
-                            <img alt="Turn the bus Logo" class="nav-logo" src="https://turnthebus.org/images/turn-the-bus-logo.png" />
+                            <img alt="Turn the bus Logo" className="nav-logo" src="https://turnthebus.org/images/turn-the-bus-logo.png" />
                              Transcription Studio
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
