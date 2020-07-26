@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/transcription-studio/static/css/main.2869d2e5.chunk.css",
-    "main.js": "/transcription-studio/static/js/main.715d217b.chunk.js",
-    "main.js.map": "/transcription-studio/static/js/main.715d217b.chunk.js.map",
+    "main.js": "/transcription-studio/static/js/main.5ae533b2.chunk.js",
+    "main.js.map": "/transcription-studio/static/js/main.5ae533b2.chunk.js.map",
     "runtime-main.js": "/transcription-studio/static/js/runtime-main.0b480857.js",
     "runtime-main.js.map": "/transcription-studio/static/js/runtime-main.0b480857.js.map",
     "static/css/2.69121389.chunk.css": "/transcription-studio/static/css/2.69121389.chunk.css",
     "static/js/2.c463dc27.chunk.js": "/transcription-studio/static/js/2.c463dc27.chunk.js",
     "static/js/2.c463dc27.chunk.js.map": "/transcription-studio/static/js/2.c463dc27.chunk.js.map",
     "index.html": "/transcription-studio/index.html",
-    "precache-manifest.5f9b33fe843d04cd98d0a9b93d9d795f.js": "/transcription-studio/precache-manifest.5f9b33fe843d04cd98d0a9b93d9d795f.js",
+    "precache-manifest.7332ccda63e9ce8becc11b1b822dce71.js": "/transcription-studio/precache-manifest.7332ccda63e9ce8becc11b1b822dce71.js",
     "service-worker.js": "/transcription-studio/service-worker.js",
     "static/css/2.69121389.chunk.css.map": "/transcription-studio/static/css/2.69121389.chunk.css.map",
     "static/css/main.2869d2e5.chunk.css.map": "/transcription-studio/static/css/main.2869d2e5.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.69121389.chunk.css",
     "static/js/2.c463dc27.chunk.js",
     "static/css/main.2869d2e5.chunk.css",
-    "static/js/main.715d217b.chunk.js"
+    "static/js/main.5ae533b2.chunk.js"
   ]
 }
