@@ -12,6 +12,8 @@ import Dropzone from 'react-dropzone';
 import pdfImage from '../assets/pdf.png';
 import tempPDF from '../assets/temp.pdf';
 import videoImage from '../assets/youtube.png';
+import mp3Image from '../assets/mp3.png';
+import mp4Image from '../assets/mp4.png';
 
 function Home() {
     const [view, setView] = useState('choose');
@@ -207,9 +209,6 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                 {view === 'editTextbook' ? renderTextbookEditor() : renderVideoTranscriptEditor()}
                 <Container style={{
                     padding: '1em 0'
-                    // position: 'fixed',
-                    // bottom: '9px',
-                    // minWidth: '100vw'
                 }} >
                     <Row>
                         <Col></Col>
@@ -234,7 +233,64 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
     }
 
     const renderNarrationDownload = () => {
-        return 'renderNarrationDownload';
+        return (
+            <Container>
+                <Row>
+                    <Col md={{ span: 10, offset: 1 }}>
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <Card>
+                                        <Card.Body>
+                                            <Container>
+                                                <Row >
+                                                    <Col />
+                                                    <Col md='6' className='justify-content-center d-flex flex-column'>
+                                                        <Card.Img
+                                                            variant="top"
+                                                            src={mp3Image}
+                                                            style={{
+                                                                maxWidth: '100px',
+                                                                alignSelf: 'center',
+                                                                margin: '3em'
+                                                            }} />
+                                                        <Button variant="link"> Download MP3 </Button>
+                                                    </Col>
+                                                    <Col />
+                                                </Row>
+                                            </Container>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col>
+                                    <Card>
+                                        <Card.Body>
+                                            <Container>
+                                                <Row >
+                                                    <Col />
+                                                    <Col md='6' className='justify-content-center d-flex flex-column'>
+                                                        <Card.Img
+                                                            variant="top"
+                                                            src={mp4Image}
+                                                            style={{
+                                                                maxWidth: '100px',
+                                                                alignSelf: 'center',
+                                                                margin: '3em'
+                                                            }} />
+                                                        <Button variant="link"> Download MP4 </Button>
+                                                    </Col>
+                                                    <Col />
+                                                </Row>
+                                            </Container>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Col>
+                </Row>
+            </Container>
+        );
     }
 
     const renderTranslatedVideoDownload = () => {
@@ -263,10 +319,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                 </Container>
                 {view === 'downloadNarration' ? renderNarrationDownload() : renderTranslatedVideoDownload()}
                 <Container style={{
-                    padding: '1em 0'
-                    // position: 'fixed',
-                    // bottom: '9px',
-                    // minWidth: '100vw'
+                    padding: '1em 0',
                 }} >
                     <Row>
                         <Col></Col>
