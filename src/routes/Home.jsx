@@ -14,6 +14,7 @@ import tempPDF from '../assets/temp.pdf';
 import videoImage from '../assets/youtube.png';
 import mp3Image from '../assets/mp3.png';
 import mp4Image from '../assets/mp4.png';
+import gif from '../assets/ocr.gif'
 
 function Home() {
     const [view, setView] = useState('choose');
@@ -23,122 +24,118 @@ function Home() {
         return (
             <>
                 <Container>
-                    <Row>
-                        <Col md={{ span: 10, offset: 1 }}>
-                            <Jumbotron style={{
-                                backgroundColor: 'transparent'
-                            }}
-                            >
-                                <p>
-                                    Start transcribing PDF textbooks or videos by uploading the PDF containing scanned textbook pages or entering the URL for the video.
+                    <Jumbotron style={{
+                        backgroundColor: 'transparent'
+                    }}
+                    >
+                        <p>
+                            Start transcribing PDF textbooks or videos by uploading the PDF containing scanned textbook pages or entering the URL for the video.
                                 </p>
-                            </Jumbotron>
-                            <Container>
-                                <Row>
-                                    <Col>
-                                        <Dropzone onDrop={acceptedFiles => {
-                                            console.debug(acceptedFiles[0]);
-                                            setPDFFile(acceptedFiles[0]);
-                                        }}
-                                        >
-                                            {({ getRootProps, getInputProps, isDragActive }) => (
-                                                <Card
-                                                    {...getRootProps()}
-                                                    border={isDragActive ? "primary" : ""}
-                                                    style={{
-                                                        width: '18rem',
-                                                        borderWidth: isDragActive ? '2px' : '1px'
-                                                    }}>
-                                                    {isDragActive && <Badge variant="primary">Drop here</Badge>}
-                                                    <Card.Body>
-                                                        <Card.Title>Upload a book PDF</Card.Title>
-                                                    </Card.Body>
-                                                    <Card.Img
-                                                        variant="top"
-                                                        src={pdfImage}
-                                                        style={{
-                                                            maxWidth: '100px',
-                                                            alignSelf: 'center',
-                                                            margin: '3em'
-                                                        }} />
-                                                    <Card.Body>
-                                                        Drag and drop file here or
-                                                            <Button
-                                                            style={{
-                                                                paddingLeft: '0'
-                                                            }}
-                                                            variant="link"
-                                                        >
-                                                            upload from your computer
-                                                            </Button>
-                                                        <input {...getInputProps()} />
-                                                        {pdfFile?.name || ''}
-                                                        <Container>
-                                                            <Row >
-                                                                <Col />
-                                                                <Col>
-                                                                    <Button
-                                                                        disabled={!pdfFile?.path}
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            setView('editTextbook');
-                                                                        }}
-                                                                        variant="success"
-                                                                    >
-                                                                        Next
-                                                                    </Button>
-                                                                </Col>
-                                                                <Col />
-                                                            </Row>
-                                                        </Container>
-                                                    </Card.Body>
-                                                </Card>
-                                            )}
-                                        </Dropzone>
-                                    </Col>
-                                    <Col style={{
-                                        textAlign: 'center',
-                                        alignSelf: 'center'
-                                    }}>
-                                        OR
-                                    </Col>
-                                    <Col>
-                                        <Card style={{ width: '18rem' }}>
+                    </Jumbotron>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <Dropzone onDrop={acceptedFiles => {
+                                    console.debug(acceptedFiles[0]);
+                                    setPDFFile(acceptedFiles[0]);
+                                }}
+                                >
+                                    {({ getRootProps, getInputProps, isDragActive }) => (
+                                        <Card
+                                            {...getRootProps()}
+                                            border={isDragActive ? "primary" : ""}
+                                            style={{
+                                                width: '18rem',
+                                                borderWidth: isDragActive ? '2px' : '1px'
+                                            }}>
+                                            {isDragActive && <Badge variant="primary">Drop here</Badge>}
                                             <Card.Body>
-                                                <Card.Title>Use an English video</Card.Title>
+                                                <Card.Title>Upload a book PDF</Card.Title>
                                             </Card.Body>
                                             <Card.Img
                                                 variant="top"
-                                                src={videoImage}
+                                                src={pdfImage}
                                                 style={{
                                                     maxWidth: '100px',
                                                     alignSelf: 'center',
                                                     margin: '3em'
                                                 }} />
                                             <Card.Body>
-                                                <Form.Group controlId="videoURL">
-                                                    <Form.Label>Enter video file URL</Form.Label>
-                                                    <Form.Control type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
-                                                </Form.Group>
+                                                Drag and drop file here or
+                                                            <Button
+                                                    style={{
+                                                        paddingLeft: '0'
+                                                    }}
+                                                    variant="link"
+                                                >
+                                                    upload from your computer
+                                                            </Button>
+                                                <input {...getInputProps()} />
+                                                {pdfFile?.name || ''}
                                                 <Container>
                                                     <Row >
                                                         <Col />
                                                         <Col>
-                                                            <Button onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                setView('editVideo');
-                                                            }} variant="success">Next</Button>
+                                                            <Button
+                                                                disabled={!pdfFile?.path}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    setView('pdfToTextLoading');
+                                                                }}
+                                                                variant="success"
+                                                            >
+                                                                Next
+                                                                    </Button>
                                                         </Col>
                                                         <Col />
                                                     </Row>
                                                 </Container>
                                             </Card.Body>
                                         </Card>
+                                    )}
+                                </Dropzone>
+                            </Col>
+                            <Col style={{
+                                textAlign: 'center',
+                                alignSelf: 'center'
+                            }}>
+                                OR
                                     </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                    </Row>
+                            <Col>
+                                <Card style={{ width: '18rem' }}>
+                                    <Card.Body>
+                                        <Card.Title>Use an English video</Card.Title>
+                                    </Card.Body>
+                                    <Card.Img
+                                        variant="top"
+                                        src={videoImage}
+                                        style={{
+                                            maxWidth: '100px',
+                                            alignSelf: 'center',
+                                            margin: '3em'
+                                        }} />
+                                    <Card.Body>
+                                        <Form.Group controlId="videoURL">
+                                            <Form.Label>Enter video file URL</Form.Label>
+                                            <Form.Control type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+                                        </Form.Group>
+                                        <Container>
+                                            <Row >
+                                                <Col />
+                                                <Col>
+                                                    <Button onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setView('editVideo');
+                                                    }} variant="success">Next</Button>
+                                                </Col>
+                                                <Col />
+                                            </Row>
+                                        </Container>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
             </>
         );
@@ -347,9 +344,35 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
         );
     }
 
+    const renderOCRLoading = () => {
+        setTimeout(() => {
+            setView('editTextbook');
+        }, 5000);
+        return (
+            <>
+                <Container>
+                    <img
+                        alt="Converting PDF to text"
+                        src={gif}
+                        style={{
+                            margin: 'auto',
+                            display: 'block'
+                        }} />
+                    <div
+                        style={{
+                            textAlign: 'center'
+                        }} >
+                        Converting PDF to text
+                    </div>
+                </Container>
+            </>
+        );
+    }
+
     return (
         <>
             {view === 'choose' && renderStepOne()}
+            {(view === 'pdfToTextLoading') && renderOCRLoading()}
             {(view === 'editTextbook' || view === 'editVideo') && renderEditorView()}
             {(view === 'downloadNarration' || view === 'downloadTranslation') && renderDowloadView()}
         </>
