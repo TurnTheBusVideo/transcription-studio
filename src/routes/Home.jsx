@@ -16,7 +16,6 @@ import mp3Image from '../assets/mp3.png';
 import mp4Image from '../assets/mp4.png';
 import gif from '../assets/ocr.gif'
 
-
 function Home() {
     const [view, setView] = useState('choose');
     const [pdfFile, setPDFFile] = useState();
@@ -63,31 +62,17 @@ function Home() {
                                                     margin: '3em'
                                                 }} />
                                             <Card.Body>
-<<<<<<< Updated upstream
-                                                Drag and drop file here or
-                                                            <Button
-                                                    style={{
-                                                        paddingLeft: '0'
-                                                    }}
-                                                    variant="link"
-                                                >
-                                                    upload from your computer
-                                                            </Button>
-                                                <input {...getInputProps()} />
+                                                Drag and drop file here or	
+                                                <Button	
+                                                    style={{	
+                                                        paddingLeft: '0'	
+                                                    }}	
+                                                    variant="link"	
+                                                >	
+                                                    upload from your computer	
+                                                </Button>	
+                                                <input {...getInputProps()} />	
                                                 {pdfFile?.name || ''}
-=======
-                                                <Form.Group controlId="videoURL">
-                                                    <Form.Label>Enter video file URL</Form.Label>
-                                                    <Form.Control 
-                                                        type="url" 
-                                                        placeholder="https://example.com" 
-                                                        pattern="https://.*" 
-                                                        size="30" 
-                                                        onChange={(event) => {setVideo(event.target.value);}}
-                                                        required 
-                                                    />
-                                                </Form.Group>
->>>>>>> Stashed changes
                                                 <Container>
                                                     <Row >
                                                         <Col />
@@ -133,7 +118,14 @@ function Home() {
                                     <Card.Body>
                                         <Form.Group controlId="videoURL">
                                             <Form.Label>Enter video file URL</Form.Label>
-                                            <Form.Control type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+                                            <Form.Control 
+                                                type="url" 
+                                                placeholder="https://www.youtube.com/embed/YpXXV10q_CY/21s" 
+                                                pattern="https://.*" 
+                                                size="30" 
+                                                onChange={(event) => {setVideo(event.target.value);}}
+                                                required 
+                                            />
                                         </Form.Group>
                                         <Container>
                                             <Row >
