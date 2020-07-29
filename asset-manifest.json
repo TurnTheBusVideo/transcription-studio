@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/transcription-studio/static/css/main.2869d2e5.chunk.css",
-    "main.js": "/transcription-studio/static/js/main.5125bc0a.chunk.js",
-    "main.js.map": "/transcription-studio/static/js/main.5125bc0a.chunk.js.map",
+    "main.js": "/transcription-studio/static/js/main.94971160.chunk.js",
+    "main.js.map": "/transcription-studio/static/js/main.94971160.chunk.js.map",
     "runtime-main.js": "/transcription-studio/static/js/runtime-main.0b480857.js",
     "runtime-main.js.map": "/transcription-studio/static/js/runtime-main.0b480857.js.map",
     "static/css/2.69121389.chunk.css": "/transcription-studio/static/css/2.69121389.chunk.css",
-    "static/js/2.fa413354.chunk.js": "/transcription-studio/static/js/2.fa413354.chunk.js",
-    "static/js/2.fa413354.chunk.js.map": "/transcription-studio/static/js/2.fa413354.chunk.js.map",
+    "static/js/2.bc8a992b.chunk.js": "/transcription-studio/static/js/2.bc8a992b.chunk.js",
+    "static/js/2.bc8a992b.chunk.js.map": "/transcription-studio/static/js/2.bc8a992b.chunk.js.map",
     "index.html": "/transcription-studio/index.html",
-    "precache-manifest.bccef5733423ceaff521cc8d3fca048a.js": "/transcription-studio/precache-manifest.bccef5733423ceaff521cc8d3fca048a.js",
+    "precache-manifest.35fb0137b7ada2634e995c5ed28e491f.js": "/transcription-studio/precache-manifest.35fb0137b7ada2634e995c5ed28e491f.js",
     "service-worker.js": "/transcription-studio/service-worker.js",
     "static/css/2.69121389.chunk.css.map": "/transcription-studio/static/css/2.69121389.chunk.css.map",
     "static/css/main.2869d2e5.chunk.css.map": "/transcription-studio/static/css/main.2869d2e5.chunk.css.map",
-    "static/js/2.fa413354.chunk.js.LICENSE.txt": "/transcription-studio/static/js/2.fa413354.chunk.js.LICENSE.txt",
+    "static/js/2.bc8a992b.chunk.js.LICENSE.txt": "/transcription-studio/static/js/2.bc8a992b.chunk.js.LICENSE.txt",
     "static/media/mp3.png": "/transcription-studio/static/media/mp3.af7bac1e.png",
     "static/media/mp4.png": "/transcription-studio/static/media/mp4.e0f6812f.png",
     "static/media/ocr.gif": "/transcription-studio/static/media/ocr.ea66cdf3.gif",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.0b480857.js",
     "static/css/2.69121389.chunk.css",
-    "static/js/2.fa413354.chunk.js",
+    "static/js/2.bc8a992b.chunk.js",
     "static/css/main.2869d2e5.chunk.css",
-    "static/js/main.5125bc0a.chunk.js"
+    "static/js/main.94971160.chunk.js"
   ]
 }
