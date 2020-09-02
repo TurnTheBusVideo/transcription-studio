@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
@@ -20,6 +21,24 @@ function Home() {
     const [view, setView] = useState('choose');
     const [pdfFile, setPDFFile] = useState();
     const [video, setVideo] = useState();
+    const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text'
+
+    const handlePDFSubmit = (e) => {
+        e.stopPropagation();
+        if(pdfFile){
+            setView('pdfToTextLoading');
+
+            axios.post(pdfUploadUrl, {
+                pdf: pdfFile
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
 
     const renderStepOne = () => {
         return (
@@ -79,10 +98,7 @@ function Home() {
                                                         <Col>
                                                             <Button
                                                                 disabled={!pdfFile?.path}
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    setView('pdfToTextLoading');
-                                                                }}
+                                                                onClick={handlePDFSubmit}
                                                                 variant="success"
                                                             >
                                                                 Next

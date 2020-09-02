@@ -5,6 +5,7 @@
   "homepage": "http://turnthebusvideo.github.io/transcription-studio",
   "dependencies": {
     "aws-amplify": "^3.0.10",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "core-js": "2.4.1",
     "faker": "^4.1.0",
