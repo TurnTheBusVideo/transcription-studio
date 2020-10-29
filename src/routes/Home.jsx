@@ -30,9 +30,10 @@ function Home() {
     const [pdfConvertedToText, setPdfConvertToText] = useState(placeHolderText);
     const [mp3DownloadLink, setMp3DownloadLink] = useState("http://www.google.com");
     const [mp4DownloadLink, setMp4DownloadLink] = useState("http://www.google.com");
-    const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
 
     const handlePDFSubmit = (e) => {
+        const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
+
         e.stopPropagation();
         if(pdfFile){
             setView('pdfToTextLoading');
@@ -41,6 +42,7 @@ function Home() {
                 pdf: pdfFile
             })
             .then(function (response) {
+                // add logic to get text from server and update pdfConvertedToText
                 console.log(response);
             })
             .catch(function (error) {
@@ -48,6 +50,27 @@ function Home() {
             });
         }
     };
+
+    const convertTextToSpeechFiles = () => {
+        const convertTextToSpeechURL = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
+        
+        if(false){
+            setView('pdfToTextLoading');
+
+            axios.post(convertTextToSpeechURL, {
+                text: pdfConvertedToText
+            })
+            .then(function (response) {
+                // add logic to get mp3 and mp4 links from server
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+
+        setView('editVideo');
+    }
 
     const renderStepOne = () => {
         return (
@@ -158,7 +181,7 @@ function Home() {
                                                 <Col>
                                                     <Button onClick={(e) => {
                                                         e.stopPropagation();
-                                                        setView('editVideo');
+                                                        convertTextToSpeechFiles();
                                                     }} variant="success">Next</Button>
                                                 </Col>
                                                 <Col />
