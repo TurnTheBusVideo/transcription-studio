@@ -11,34 +11,79 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Dropzone from 'react-dropzone';
 import pdfImage from '../assets/pdf.png';
-import tempPDF from '../assets/temp.pdf';
 import videoImage from '../assets/youtube.png';
 import mp3Image from '../assets/mp3.png';
 import mp4Image from '../assets/mp4.png';
-import gif from '../assets/ocr.gif'
+import gif from '../assets/ocr.gif';
+import DocumentPreviewer from "../components/DocumentPreview";
 
 function Home() {
+    const placeHolderText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate, leo in pretium lobortis, enim tortor maximus odio,` + 
+    `in finibus velit nunc et enim. Curabitur laoreet erat quis ultrices vehicula. Nunc enim purus, mattis sed posuere id, tempus quis ipsum. Quisque at elit in` + 
+    `felis feugiat iaculis. Nulla vehicula nec orci eu feugiat. Proin vel ornare diam. Proin imperdiet iaculis purus, ut porttitor tortor finibus vitae.\n\n\n` + 
+    `Ut euismod eleifend orci, sit amet hendrerit purus ultrices sed. Donec eu nunc ut est fermentum finibus. Ut quam ipsum, ornare eget mi id, fringilla` +
+    `mattis velit. Aliquam ac ligula risus. In tincidunt tellus in convallis consectetur. Ut tincidunt ante pulvinar erat condimentum elementum. Proin non vehicula ante.`;
+
     const [view, setView] = useState('choose');
     const [pdfFile, setPDFFile] = useState();
     const [video, setVideo] = useState();
-    const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text'
+    const [pdfConvertedToText, setPdfConvertToText] = useState(placeHolderText);
+    const [mp3DownloadLink, setMp3DownloadLink] = useState("http://www.google.com");
+    const [mp4DownloadLink, setMp4DownloadLink] = useState("http://www.google.com");
 
     const handlePDFSubmit = (e) => {
+        const pdfUploadUrl = 'https://n1dlwz4pfd.execute-api.ap-south-1.amazonaws.com/test/pdf';
+
         e.stopPropagation();
+
         if(pdfFile){
             setView('pdfToTextLoading');
 
-            axios.post(pdfUploadUrl, {
-                pdf: pdfFile
+            var formData = new FormData();
+            formData.append("pdf", pdfFile);
+
+            axios
+              .post(pdfUploadUrl, formData, {
+                headers: {
+                    "Content-Type": 'multipart/form-data' 
+                }
+            })
+              .then(function (response) {
+
+                // add logic to get text from server and update pdfConvertedToText
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        }
+    };
+
+    const convertTextToSpeechFiles = () => {
+        const convertTextToSpeechURL = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
+        
+        if(false){
+            setView('pdfToTextLoading');
+
+            const payload = {text: pdfConvertedToText}
+
+            axios.post(convertTextToSpeechURL, payload, {
+                headers:{
+                    "Content-Type": "application/json"
+                }
             })
             .then(function (response) {
+
+                // add logic to get mp3 and mp4 links from server
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
             });
         }
-    };
+
+        setView('editVideo');
+    }
 
     const renderStepOne = () => {
         return (
@@ -149,7 +194,7 @@ function Home() {
                                                 <Col>
                                                     <Button onClick={(e) => {
                                                         e.stopPropagation();
-                                                        setView('editVideo');
+                                                        convertTextToSpeechFiles();
                                                     }} variant="success">Next</Button>
                                                 </Col>
                                                 <Col />
@@ -166,6 +211,10 @@ function Home() {
     }
 
     const renderTextbookEditor = () => {
+        const updateText = (e) => {
+            const updatedText = e.target.value;
+            setPdfConvertToText(updatedText);
+        }
 
         return (<>
             <div style={{
@@ -177,11 +226,8 @@ function Home() {
                 <div style={{
                     flexGrow: '1'
                 }}>
-                    <iframe
-                        title='PDF'
-                        src={tempPDF}
-                        width="100%"
-                        height="100%" />
+
+                    <DocumentPreviewer document={pdfFile} />
                 </div>
                 <div style={{
                     flexGrow: '1'
@@ -192,13 +238,8 @@ function Home() {
                             height: '100%',
                             padding: '2em'
                         }}
-                        defaultValue={`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate, leo in pretium lobortis, enim tortor maximus odio, in finibus velit nunc et enim. Curabitur laoreet erat quis ultrices vehicula. Nunc enim purus, mattis sed posuere id, tempus quis ipsum. Quisque at elit in felis feugiat iaculis. Nulla vehicula nec orci eu feugiat. Proin vel ornare diam. Proin imperdiet iaculis purus, ut porttitor tortor finibus vitae. Ut euismod eleifend orci, sit amet hendrerit purus ultrices sed. Donec eu nunc ut est fermentum finibus. Ut quam ipsum, ornare eget mi id, fringilla mattis velit. Aliquam ac ligula risus. In tincidunt tellus in convallis consectetur. Ut tincidunt ante pulvinar erat condimentum elementum. Proin non vehicula ante.
-
-Donec elementum vehicula leo, id elementum mauris blandit vel. Ut scelerisque ut dolor quis auctor. Donec ultrices, mi ac pellentesque tincidunt, libero mi molestie ante, vel interdum mauris neque vel nisi. Vestibulum at tincidunt ex. Aenean pharetra pretium posuere. Duis fermentum arcu magna, nec pulvinar enim blandit consectetur. Praesent cursus aliquet ligula ut congue. Nullam nec diam ac ligula malesuada condimentum. Proin aliquam varius eleifend.
-
-Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. Aenean non consequat sem. Nullam vestibulum metus urna, dignissim ornare mi condimentum vitae. Suspendisse in maximus dui. Vestibulum nulla leo, pharetra a ante vitae, sodales pellentesque dolor. Nullam lacinia tellus sodales eros bibendum ornare. Curabitur eu dolor aliquet, tincidunt ipsum at, eleifend velit. Fusce at ante vitae tortor fringilla mattis eu nec leo. Mauris a sem eu nunc varius convallis fermentum ac nunc. Fusce neque lacus, varius ut auctor a, pellentesque at lacus. Praesent eleifend condimentum turpis, ut imperdiet tortor auctor nec. 
-                        `}
+                        value={pdfConvertedToText}
+                        onChange={updateText}
                     ></textarea>
                 </div>
             </div>
@@ -312,6 +353,15 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
     }
 
     const renderNarrationDownload = () => {
+
+        const downloadMp3Version = () => {
+            window.open(mp3DownloadLink, '_blank');
+        }
+
+        const downloadMp4Version = () => {
+            window.open(mp4DownloadLink, '_blank');
+        }
+
         return (
             <Container>
                 <Row>
@@ -333,7 +383,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                                                                 alignSelf: 'center',
                                                                 margin: '3em'
                                                             }} />
-                                                        <Button variant="link"> Download MP3 </Button>
+                                                        <Button variant="link" onClick={downloadMp3Version}> Download MP3 </Button>
                                                     </Col>
                                                     <Col />
                                                 </Row>
@@ -356,7 +406,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                                                                 alignSelf: 'center',
                                                                 margin: '3em'
                                                             }} />
-                                                        <Button variant="link"> Download MP4 </Button>
+                                                        <Button variant="link" onClick={downloadMp4Version}> Download MP4 </Button>
                                                     </Col>
                                                     <Col />
                                                 </Row>
