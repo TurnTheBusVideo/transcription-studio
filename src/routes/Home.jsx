@@ -27,8 +27,10 @@ function Home() {
     const [view, setView] = useState('choose');
     const [pdfFile, setPDFFile] = useState();
     const [video, setVideo] = useState();
-    const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text'
     const [pdfConvertedToText, setPdfConvertToText] = useState(placeHolderText);
+    const [mp3DownloadLink, setMp3DownloadLink] = useState("http://www.google.com");
+    const [mp4DownloadLink, setMp4DownloadLink] = useState("http://www.google.com");
+    const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
 
     const handlePDFSubmit = (e) => {
         e.stopPropagation();
@@ -315,6 +317,15 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
     }
 
     const renderNarrationDownload = () => {
+
+        const downloadMp3Version = () => {
+            window.open(mp3DownloadLink, '_blank');
+        }
+
+        const downloadMp4Version = () => {
+            window.open(mp4DownloadLink, '_blank');
+        }
+
         return (
             <Container>
                 <Row>
@@ -336,7 +347,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                                                                 alignSelf: 'center',
                                                                 margin: '3em'
                                                             }} />
-                                                        <Button variant="link"> Download MP3 </Button>
+                                                        <Button variant="link" onClick={downloadMp3Version}> Download MP3 </Button>
                                                     </Col>
                                                     <Col />
                                                 </Row>
@@ -359,7 +370,7 @@ Integer id ullamcorper urna, efficitur gravida nulla. Aenean vel dictum libero. 
                                                                 alignSelf: 'center',
                                                                 margin: '3em'
                                                             }} />
-                                                        <Button variant="link"> Download MP4 </Button>
+                                                        <Button variant="link" onClick={downloadMp4Version}> Download MP4 </Button>
                                                     </Col>
                                                     <Col />
                                                 </Row>
