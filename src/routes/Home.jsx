@@ -35,19 +35,26 @@ function Home() {
         const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
 
         e.stopPropagation();
+
         if(pdfFile){
             setView('pdfToTextLoading');
 
-            axios.post(pdfUploadUrl, {
-                pdf: pdfFile
-            })
-            .then(function (response) {
+            var formData = new FormData();
+            formData.append("pdf", pdfFile);
+
+            axios
+              .post(pdfUploadUrl, formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                })
+              .then(function (response) {
+
                 // add logic to get text from server and update pdfConvertedToText
                 console.log(response);
-            })
-            .catch(function (error) {
+              })
+              .catch(function (error) {
                 console.log(error);
-            });
+              });
         }
     };
 
@@ -57,10 +64,15 @@ function Home() {
         if(false){
             setView('pdfToTextLoading');
 
-            axios.post(convertTextToSpeechURL, {
-                text: pdfConvertedToText
+            const payload = {text: pdfConvertedToText}
+
+            axios.post(convertTextToSpeechURL, payload, {
+                headers:{
+                    "Content-Type": "application/json"
+                }
             })
             .then(function (response) {
+                
                 // add logic to get mp3 and mp4 links from server
                 console.log(response);
             })
