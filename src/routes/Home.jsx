@@ -88,7 +88,7 @@ function Home() {
                                                     }}	
                                                     variant="link"	
                                                 >	
-                                                    upload from your computer	
+                                                    Upload from your computer	
                                                 </Button>	
                                                 <input {...getInputProps()} />	
                                                 {pdfFile?.name || ''}
