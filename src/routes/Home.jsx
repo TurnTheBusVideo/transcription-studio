@@ -32,7 +32,7 @@ function Home() {
     const [mp4DownloadLink, setMp4DownloadLink] = useState("http://www.google.com");
 
     const handlePDFSubmit = (e) => {
-        const pdfUploadUrl = 'https://turnthebus-tts.azurewebsites.net/pdf-to-text';
+        const pdfUploadUrl = 'https://n1dlwz4pfd.execute-api.ap-south-1.amazonaws.com/test/pdf';
 
         e.stopPropagation();
 
@@ -45,8 +45,9 @@ function Home() {
             axios
               .post(pdfUploadUrl, formData, {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
-                })
+                    "Content-Type": 'multipart/form-data' 
+                }
+            })
               .then(function (response) {
 
                 // add logic to get text from server and update pdfConvertedToText
@@ -72,7 +73,7 @@ function Home() {
                 }
             })
             .then(function (response) {
-                
+
                 // add logic to get mp3 and mp4 links from server
                 console.log(response);
             })
