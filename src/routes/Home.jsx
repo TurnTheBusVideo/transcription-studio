@@ -11,11 +11,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Dropzone from 'react-dropzone';
 import pdfImage from '../assets/pdf.png';
-import tempPDF from '../assets/temp.pdf';
 import videoImage from '../assets/youtube.png';
 import mp3Image from '../assets/mp3.png';
 import mp4Image from '../assets/mp4.png';
-import gif from '../assets/ocr.gif'
+import gif from '../assets/ocr.gif';
+import DocumentPreviewer from "../components/DocumentPreview";
 
 function Home() {
     const placeHolderText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate, leo in pretium lobortis, enim tortor maximus odio,` + 
@@ -188,11 +188,8 @@ function Home() {
                 <div style={{
                     flexGrow: '1'
                 }}>
-                    <iframe
-                        title='PDF'
-                        src={tempPDF}
-                        width="100%"
-                        height="100%" />
+
+                    <DocumentPreviewer document={pdfFile} />
                 </div>
                 <div style={{
                     flexGrow: '1'
