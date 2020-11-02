@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "428752c5a91ba6ad435d11b5cc5e5744",
+    "revision": "6f5abb228e6495bb21392d3e2eeff669",
     "url": "/transcription-studio/index.html"
   },
   {
-    "revision": "f664a8a8f866b9f2119f",
+    "revision": "1b5380f6f1a1759df40e",
     "url": "/transcription-studio/static/css/2.69121389.chunk.css"
   },
   {
-    "revision": "bbba0396ddf3960a6241",
+    "revision": "4093fab41ea5ade40c33",
     "url": "/transcription-studio/static/css/main.2869d2e5.chunk.css"
   },
   {
-    "revision": "f664a8a8f866b9f2119f",
-    "url": "/transcription-studio/static/js/2.503b85e9.chunk.js"
+    "revision": "1b5380f6f1a1759df40e",
+    "url": "/transcription-studio/static/js/2.299504b1.chunk.js"
   },
   {
     "revision": "a200174c44a1c583da2ca47c7148e922",
-    "url": "/transcription-studio/static/js/2.503b85e9.chunk.js.LICENSE.txt"
+    "url": "/transcription-studio/static/js/2.299504b1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bbba0396ddf3960a6241",
-    "url": "/transcription-studio/static/js/main.2f2d1335.chunk.js"
+    "revision": "4093fab41ea5ade40c33",
+    "url": "/transcription-studio/static/js/main.c6d452a5.chunk.js"
   },
   {
     "revision": "3240be39fdf1aae5a95b",
